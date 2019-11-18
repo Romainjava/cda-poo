@@ -3,63 +3,76 @@ package chat;
 public class Cat {
 	String color;
 	String name;
-	
-	
-	
-	/**
-	 * Constructeur sans paramÃ¨tre
-	 */
-	public Cat() {
-		System.out.println("Naissance d'un nouveau chat");
-		this.name = "Arthur";
-		this.color = "Gris";
-	}
-	
-	/**
-	 * Constructeur avec paramÃ¨tre
-	 * @param pName
-	 * @param pColor
-	 */
-	public Cat(String pName, String pColor) {
-		System.out.println("Naissance d'un nouveau chat");
+	int status;
+	boolean hunger;
+	int energy;
+	boolean mort;
+
+	public Cat(String pName, String pColor, int pStatus) {
+		System.out.println("naissance d'un nvx chat");
 		this.name = pName;
 		this.color = pColor;
+		this.status = pStatus;
+		this.hunger = true;
+		this.energy = 5; // initialisé a 5
+		this.mort = true;
 	}
-	
-	/**
-	 * Permet d'afficher une description du chat
-	 */
+
 	public void getDescription() {
-		System.out.println("Le chat " + this.color + " s'appelle " + this.name);
+		String result = "Le chat à ";
+		if (status == 1) {
+			result += "faim";
+		} else if (status == 2) {
+			result += "très faim";
+		} else if (status == 3) {
+			result += "très très faim";
+		} else if (status == 4) {
+			result += "est mort de faim";
+			this.mort = false;
+		}
+		System.out.println(result);
 	}
-	
-	/**
-	 * mÃ©thode qui permet d'Ã©couter le chat
-	 */
+
 	public void listen() {
-		System.out.println("Miaouuuuuu");
+		if (this.hunger == true) {
+			System.out.println("Ronronne ^_^");
+			this.energy += 1;
+		} else if (this.hunger == false) {
+			System.out.println("Le chat vous écoute plus et vous snob");
+			this.energy -= 1;
+		}
+
 	}
-	
-	/**
-	 * mÃ©thode qui permet de nourrir le chat
-	 * @param food
-	 */
-	public void eat(String food) {
-		System.out.println(this.name + " mange " + food);
-	}
-	
-	/**
-	 * MÃ©thode qui permet d'envoyer le chat Ã  la chasse
-	 * @return
-	 */
+
 	public String hunt() {
-		System.out.println(this.name + " part Ã  la chasse ");
-		String[] chasse = {"souris", "oiseau", "chaussette"};
-		int n = (int)(Math.random() * 3);
-		return chasse[n];
-	} 
-	
-	public void sleep() {
-		System.out.println(this.name + " dort");
+		String proie[] = { "oiseau", "mulot", "serpent" };
+		int random = (int) (Math.random() * 3);
+		String result;
+		if (this.energy > 2) {
+			result = proie[random];
+			this.hunger = false;
+		} else {
+			result = " est épuisé et n'a plus la force de chasser, nourriser le";
+		}
+
+		return result;
 	}
+
+	public void eat(String food) {
+		System.out.println("slurp slurp miam le " + food + " Meoww O_O");
+	}
+
+	public void sleep() {
+		System.out.println("ZzzzZzzzzZz");
+	}
+
+	public void notHappy() {
+		System.out.println("Le chat après avoir chassé, s'en va dehors et reviendra demain");
+	}
+	
+	public void isDead() {
+		this.mort = false;
+		System.out.println("Le chat est mort");
+	}
+
 }

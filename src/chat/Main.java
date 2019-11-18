@@ -5,55 +5,62 @@ import java.util.Scanner;
 public class Main {
 
 	public static void main(String[] args) {
-
 		Scanner sc = new Scanner(System.in);
-		Cat monChat = new Cat();
-		System.out.println("Comment s'appelle-t-il ?");
-		monChat.name = sc.next();
-		System.out.println("De quelle couleur est " + monChat.name + " ?");
-		monChat.color = sc.next();
-		sc.nextLine(); // nettoyage du scanner
-		monChat.getDescription();
-		boolean flag = true;
+		System.out.println("Veuillez entrez un nom à votre chat");
+		String nom_user = sc.nextLine();
+		System.out.println("Veuillez entre une couleur à votre chat");
+		String color_chat = sc.nextLine();
 
-		do {
-			System.out.println("Quelle action voulez vous ?");
-			System.out.println("1 : Ã©couter; 2 : manger; 3 : chasser; 4 : description; 5 : dormir; 0 : quit");
-			int i = sc.nextInt();
-			switch (i) {
-			case 1:
-				monChat.listen();
-				break;
-			case 2:
+		/*
+		 * Cat monChat = new Cat(); monChat.name = "Régis"; monChat.color = "blue";
+		 * monChat.getDescription();
+		 * 
+		 * Cat monChat_2 = new Cat(); monChat_2.name = "toto"; monChat_2.color =
+		 * "rouge"; monChat_2.getDescription();
+		 * 
+		 * Cat tonChat = new Cat(); tonChat.getDescription();
+		 */
 
-				System.out.println(monChat.name + "veut manger");
-				System.out.println("Vous lui donnez, quoi ?");
-				sc.nextLine();
-				String food = sc.next();
-				sc.nextLine(); // nettoyer le scanner quand on change de type
-				monChat.eat(food);
-				break;
-			case 3:
-				String t = monChat.hunt();
-				System.out.println(monChat.name + " vous rapporte Ã§a : " + t);
-				break;
-			case 4:
-				monChat.getDescription();
-				break;
-			case 5:
-				monChat.sleep();
-				break;
-			case 0:
-				flag = false;
-				break;
-			default:
-				System.out.println(monChat.name + " ne comprend pas");
-				break;
+		/*
+		 * Cat saChatte = new Cat("Rosie", "Blanche"); saChatte.getDescription();
+		 */
+
+		Cat myCat = new Cat(nom_user, color_chat, 0);
+		
+		/* ==== SCENARIO === */
+		do { 
+			/* ==== Ici action utilisateur ==== */
+			
+			System.out.println("Votre chat à t'il faim ? o/n");
+			String answer = sc.nextLine();
+			if (answer.charAt(0) == 'o') {
+				myCat.eat("pathé");
+				myCat.status = -1;
+				
+			} else {
+				System.out.println(myCat.name + " Chasse et à trouvé un " + myCat.hunt());
+				myCat.status = -1;
 			}
-		} while (flag);
-		System.out.println("Good bye");
-		sc.close();
 
+			/* ==== Ici action par rapport au status ==== */
+			
+			if (myCat.status == 1) {
+				System.out.println(
+						myCat.name + " Le chat a bien mangé et est content d'avoir rien eu à faire pour se nourrir");
+				myCat.listen();
+				System.out.println(myCat.name + " dans sa lancé il s'en va dormir...");
+				myCat.sleep();
+			} else if (myCat.status == -1) {
+				myCat.notHappy();
+			}
+			System.out.println("Voulez vous continuer ? o/n");
+			answer = sc.nextLine();
+			if (answer.charAt(0) == 'n') {
+				myCat.isDead();
+				System.out.println("Fin du jeu, on achetera un autre chat bientôt ^_^");
+			}
+		} while (myCat.mort);
+		sc.close();
 	}
 
 }
