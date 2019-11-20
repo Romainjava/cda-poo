@@ -45,7 +45,7 @@ public class Cercle_main {
 			System.out.println("Quel valeur  x y rayon ? ");
 			tab_dynamique.add(new C_CERCLE(sc.nextInt(),sc.nextInt(),sc.nextInt()));
 		}
-		System.out.println(Arrays.toString(tab_dynamique)));
+		
 	}
 
 }
