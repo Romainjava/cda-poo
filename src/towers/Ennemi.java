@@ -5,13 +5,13 @@ import java.util.Scanner;
 public class Ennemi {
 
 	// === Variable d'instance === //
-	float posX;
-	float posY;
-	int pv;
-	int rapidite;
-	String name;
+	private float posX;
+	private float posY;
+	private int pv;
+	private int rapidite;
+	private String name;
 	// === Variable de Class === //
-	static int compteur;
+	private static int compteur;
 
 	// === Constructeur === //
 	public Ennemi() {
@@ -90,5 +90,59 @@ public class Ennemi {
 		sc.close();
 		return ennemi;
 	}
+	
+	// === ACCESSEUR === //
+	
+	public float getPosX() {
+		return this.posX;
+	}
+	
+	public float getPosY() {
+		return this.posY;
+	}
+	
+	// === MUTATEUR === //
+	
+	public void setPosX(int x) {
+		this.posX = x;
+	}
+	
+	public int getPv() {
+		return pv;
+	}
+
+	public void setPv(int pv) {
+		this.pv = pv;
+	}
+
+	public int getRapidite() {
+		return rapidite;
+	}
+
+	public void setRapidite(int rapidite) {
+		this.rapidite = rapidite;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public static int getCompteur() {
+		return compteur;
+	}
+
+	public static void setCompteur(int compteur) {
+		Ennemi.compteur = compteur;
+	}
+
+	public void setPosY(int y) {
+		this.posY = y;
+	}
+	
+	
 
 }

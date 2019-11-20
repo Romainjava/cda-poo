@@ -24,9 +24,10 @@ public class Terrain {
 		staticEnnemi.affiche();
 		System.out.println(grosMechant.toString());
 		
-		System.out.println("nombre d'ennemi : " + grosMechant.compteur);
-		// === Warning eclipse suggere de le mettre sur le nom de class directement === //
-		System.out.println("nombre d'ennemi : " + Ennemi.compteur);
+		System.out.println("nombre d'ennemi : " + grosMechant.getCompteur());
+		
+		// === WARNING ECLIPSE SUGGERE DE LE METTRE SUR LE NOM DE CLASS DIRECTEMENT === //
+		System.out.println("nombre d'ennemi : " + Ennemi.getCompteur());
 		
 		
 		
