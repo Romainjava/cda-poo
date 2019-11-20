@@ -37,17 +37,20 @@ public class Cercle_main {
 		System.out.println("voici la longueur du tableau que vous avez rempli : " + user_tab.length);
 
 		ArrayList<C_CERCLE> tab_dynamique = new ArrayList<>();
-		String answer;
+		String answer = "";
+		
 		do {
-			System.out.println("Voulez-vous remplir l'arraylist d'un objet ? o/n");
-			answer = sc.nextLine();
-			System.out.println("Quel valeur  x y rayon ? ");
+			System.out.println("Quel valeur  x puis y puis rayon ? Saisi en plusieurs fois ");
 			tab_dynamique.add(new C_CERCLE(sc.nextInt(), sc.nextInt(), sc.nextInt()));
+			sc.nextLine();
+			System.out.println("Voulez-vous remplir l'arraylist d'un objet encore  ? o/n");
+			answer = sc.nextLine();
 		} while (answer.charAt(0) == 'o');
 
 		int i = 0;
+		
 		for (C_CERCLE c_CERCLE : tab_dynamique) {
-			System.out.println("Voici l'objet i " + c_CERCLE);
+			System.out.println("Voici l'objet  "+i+" : " +c_CERCLE);
 			i++;
 		}
 

@@ -31,6 +31,11 @@ public class C_CERCLE {
 	public void affiche() {
 		System.out.println("Voici x : " + this.x + "\nVoici y : "+ this.y + "\nVoici le rayon : "+ this.rayon);
 	}
+	
+	@Override //surcharge de la methode toString pour pouvoir afficher un objet
+	public String toString() {
+		return "C_CERCLE [x=" + x + ", y=" + y + ", rayon=" + rayon + "]";
+	}
 
 	/* ========= ACCESSEUR MUTATEUR =========== */
 	public int getX() {
