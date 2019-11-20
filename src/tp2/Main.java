@@ -12,6 +12,11 @@ public class Main {
 		point_un.affichage();
 		point_deux.affichage();
 		point_copy.affichage();
+		
+		// == VERIFICATION QUE JE NE FAIS PAS DE COPY PAR REFERENCE == //
+		point_copy.nom = 'C';
+		point_copy.affichage();
+		point.affichage();
 
 	}
 
